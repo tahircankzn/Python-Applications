@@ -100,15 +100,18 @@ class MainWindow(Screen):
                 firstPoint = list[0]
                 if "X" in firstPoint:
                     Xresult = firstPoint.replace("X","*")
-                    self.ids.result.text = str(float(eval(Xresult))/100)
+                    self.ids.result.text = str(float(eval(Xresult))/100)[0:7]
                 elif "-" in firstPoint:
-                    self.ids.result.text = str(float(eval(firstPoint))/100)
+                    self.ids.result.text = str(float(eval(firstPoint))/100)[0:7]
                 elif "+" in firstPoint:
-                    self.ids.result.text = str(float(eval(firstPoint))/100)
+                    self.ids.result.text = str(float(eval(firstPoint))/100)[0:7]
                 elif "/" in firstPoint:
-                    self.ids.result.text = str(float(eval(firstPoint))/100)
+                    self.ids.result.text = str(float(eval(firstPoint))/100)[0:7]
                 else :
                     self.ids.result.text = str(int(firstPoint)/100)
+                fdeletewrite = open("delete.txt", "w")
+                fdeletewrite.write("2")
+                fdeletewrite.close()
             
 
                 pass
@@ -122,7 +125,14 @@ class MainWindow(Screen):
                 fdeletewrite.close()
             
             else:
-                self.ids.result.text = str(eval(str(self.ids.result.text)))
+                #self.ids.result.text = str(eval(str(self.ids.result.text)))
+                a = str(float(eval(self.ids.result.text)))
+                if "." in a:
+                    
+                    spot = a.index(".")
+                    self.ids.result.text = a[0:(spot+6)]
+                else :
+                    self.ids.result.text = a
 
                 fdeletewrite = open("delete.txt", "w")
                 fdeletewrite.write("2")
