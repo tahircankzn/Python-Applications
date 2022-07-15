@@ -97,8 +97,13 @@ class MainWindow(Screen):
 
             elif "%" in self.ids.result.text :
                 list = self.ids.result.text.split("%")
+                index1 = self.ids.result.text.index("%")
+                len1 = index1 + 1
                 firstPoint = list[0]
-                if "X" in firstPoint:
+                if len(self.ids.result.text) > len1:
+                    secondpoint = list[1]
+                    self.ids.result.text = str((int(firstPoint)*int(secondpoint))/100)
+                elif "X" in firstPoint:
                     Xresult = firstPoint.replace("X","*")
                     self.ids.result.text = str(float(eval(Xresult))/100)[0:7]
                 elif "-" in firstPoint:
