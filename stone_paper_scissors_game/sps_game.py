@@ -1,4 +1,4 @@
-#from re import A
+
 from tracemalloc import stop
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -12,25 +12,7 @@ from kivy.clock import Clock
 
 ##############################
 Window.clearcolor = (174/255.0, 174/255.0, 174/255.0,1)
-##############################
-########## AÇILIŞ EKRANI ########
-class aç(App):
-    def build(self):
-        self.window = GridLayout()
-        self.window.cols = 1
-        self.window.size_hint=(1,1)#(0.6,1)
-        self.window.pos_hint={"center_x": 0.5 ,"center_y": 0.5 }    
-        
-        
-        self.greetingname = Label(text="      \n\n\n\n  Taş\n Kağıt\nMakas\n",font_size= 120,color="#0C0F03")
-        self.window.add_widget(self.greetingname)
-        
-        self.greetingmy= Label(text="Powered by Tahir Can Kozan",font_size= 60,color="#2345CC")
-        self.window.add_widget(self.greetingmy)
-               
-        Clock.schedule_once(self.stop,5) # belirlenen süre bitince class durur
-        return self.window
-  
+
 ########## OYUN BÖLÜMÜ ########
            
 class tkm_oyunu(App):
@@ -261,5 +243,5 @@ class tkm_oyunu(App):
 
 #             
 if __name__ == "__main__":
-    #aç().run()
+   
     tkm_oyunu().run()
