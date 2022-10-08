@@ -1,0 +1,96 @@
+<MainWindow>
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+    BoxLayout:
+        orientation: "vertical"
+        size : root.width , root.height
+
+        spacing : 30 # butonlar arası boşluk
+        padding: 40 # kenarlara olan uzaklık
+
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 3
+            size_hint : 1,0.2
+
+            Label:
+                id :jarvisisim
+                text: "Jarvis"
+                font_size : 80
+                color : "#FFFFFF"
+                
+            Label:
+                id : scor
+                text: "0 / 0"
+                font_size : 90
+            Label:
+                id:playerisim
+                font_size : 80
+                text: "Player"
+                color : "#FFFFFF"
+            
+        
+        GridLayout:
+            size : root.width , root.height
+            cols : 3
+
+            Image:
+                id: jarvisimg
+                source : "backgroundcard.png"
+                # allow_stretch : True  resimi tam sığdırır
+                # keep_ration : False
+            Image:
+                source : "vs.png" # büyüklüğü değişebilir olucak
+                
+            Image:
+                id: playerimg
+                source : "backgroundcard.png"
+
+            
+            
+        
+
+        GridLayout:
+            size_hint : 1,0.2
+            cols : 5
+            
+            Image:
+                id : healt1
+                source: "beyaz can bas.png"
+            Image:
+                id : healt2
+                source: "beyaz orta.png"
+            Image:
+                id : healt3
+                source: "beyaz can son.png"
+            
+            Button:
+                text: "Atak"
+                font_size : 60
+                background_color :"#0EEB12"
+                on_release:  root.atak()
+        
+        GridLayout:
+            size_hint : 1,0.3
+            cols : 3
+
+            Button:
+                text: "Kılıç"
+                font_size : 60
+                background_color :"#0EEB12"
+                on_release:  root.kılıç() , root.ulti_dolum()  # başka bir fonksiyonla atak barını hareketlendir
+                
+            Button:
+                text: "Kalkan"
+                font_size : 60
+                background_color :"#0EEB12"
+                on_release:  root.kalkan() , root.ulti_dolum()
+            Button:
+                text: "Galadyatör"
+                font_size : 60
+                background_color :"#0EEB12"
+                on_release:  root.adam(), root.ulti_dolum()
+                
