@@ -1049,6 +1049,15 @@ print(kare)
 ###############################################################################
 #%%
 
+liste = [1,2,3,1,4,5]
+
+liste1 = [6,7,8,9]
+
+liste.extend(liste1)  # liste + liste1
+liste.remove(1) # 1 elemanı silindi   # birden fazla ise ilki silinir   [1,2,1] --> [2,1]     
+liste.pop(2) # 2. indeksdeki eleman silindi                              #
+print(liste)
+
 
 ###############################################################################
 #%%
