@@ -1054,8 +1054,15 @@ liste = [1,2,3,1,4,5]
 liste1 = [6,7,8,9]
 
 liste.extend(liste1)  # liste + liste1
-liste.remove(1) # 1 elemanı silindi   # birden fazla ise ilki silinir   [1,2,1] --> [2,1]     
-liste.pop(2) # 2. indeksdeki eleman silindi                              #
+# [1,2,3,1,4,5,6,7,8,9]
+liste.remove(1) # 1 elemanı silindi   # birden fazla ise ilki silinir   [1,2,1] --> [2,1]  
+# [2,3,1,4,5,6,7,8,9]                                                    #
+liste.pop(2) # 2. indeksdeki eleman silindi
+# [2,3,4,5,6,7,8,9]
+del liste[-1] # -1. indeks silindi
+# [2,3,4,5,6,7,8]
+liste.append(2) # liste sonuna 2 elemanı eklendi
+# [2,3,4,5,6,7,8,2]
 print(liste)
 
 
