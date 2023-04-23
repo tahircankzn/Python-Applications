@@ -56,8 +56,7 @@ class akademikKadro:
 
 
 sınıflar = {
-    "sınıf1" : sınıfListesi(),
-    "sınıf2" : sınıfListesi()
+    "sınıf1" : sınıfListesi()
 }
 
 
@@ -66,10 +65,11 @@ sınıflar = {
 
 
 kadro = akademikKadro()
-öğrenciler = {"123":öğrenci("Tahir Can Kozan",56144230822,1,56144)}
+öğrenciler = {"123":öğrenci("Tahir Can Kozan",56144230822,1,56144),
+              "1234":öğrenci("Ali",123456789,1,12345)}
 
 sınıflar["sınıf1"].liste.append(öğrenciler)
-sınıflar["sınıf2"].liste.append({"1234":öğrenci("Ali",123456789,1,12345)})
+
 
 
 
@@ -88,7 +88,7 @@ def sınıfListeleri(sınıflar):
 
 while True:
 
-    print("1 -> Öğreci giriş\n2 -> Öğretmen giriş")
+    print("1 -> Öğrenci giriş\n2 -> Öğretmen giriş")
 
     a = int(input("> "))
 
@@ -144,7 +144,7 @@ while True:
                     print(f"ortalama { (not1+not2)/2}")
 
 
-###########################################################################################
+
     elif a ==2: # 2 öğretmen giriş
         doğrulama = 0
         Müdür = 0
@@ -160,7 +160,8 @@ while True:
                     if kadro.liste[giriş].branş == "Müdür":
                         Müdür = 1
                     doğrulama = 1
-                    Öğretmen = kadro.liste[giriş].branş
+                    Öğretmen_branşı = kadro.liste[giriş].branş
+                    
                     break
                 
                     
@@ -181,7 +182,7 @@ while True:
                     print("1 -> Sınav notu gir\n2 -> Sınıf listesi düzenle\n3 -> Sınıf Listeleri\n4 -> Çıkış")
                     while True:
                         r = input("> ")
-                        if r in ["1","2","3"]:
+                        if r in ["1","2","3","4"]:
                             break
                         else:
                             print("Geçersiz Seçim")
@@ -203,19 +204,28 @@ while True:
 
                     elif r == "2":
                         for i in sınıflar:
-                            print(f"{i} :")
+                            print(f"{i} öğrencileri :")
                             for a in sınıflar[i].liste:
                                 [print(x) for x in a.keys()]
+
                         print("Sınıf değişikliği için öğrenci no ve sınıf seçiniz.")
-                        öğrenciNo = input("> Öğrenci No : ")
-                        ilkSınıf = input("> nerden : ")
-                        ikinciSınıf = input("> nereye : ")
-                        öğrenci_değişim = sınıflar[ilkSınıf]
-                        del sınıflar[ilkSınıf].liste[0][öğrenciNo]
-                        sınıflar[ikinciSınıf].liste[0][öğrenciNo] = öğrenci_değişim
-                        print(sınıflar["sınıf1"].liste[0])
-                        print(sınıflar["sınıf2"].liste[0])
-                        pass
+
+                        while True:
+                            öğrenciNo = input("> Öğrenci No : ")
+                            ilkSınıf = input("> Bulunduğu Sınıf : ")
+                            ikinciSınıf = input("> Gideceği Sınıf : ")
+                            try:
+                                öğrenci_değişim = sınıflar[ilkSınıf]
+                                del sınıflar[ilkSınıf].liste[0][öğrenciNo]
+                                sınıflar[ikinciSınıf].liste[0][öğrenciNo] = öğrenci_değişim
+                                for i in sınıflar:
+                                    print(f"{i} öğrencileri :")
+                                    for a in sınıflar[i].liste:
+                                        [print(x) for x in a.keys()]
+                                break
+                            except:
+                                print("Geçersiz İşlem")
+                            
 
                     elif r == "3":
                         sınıfListeleri(sınıflar)
@@ -231,12 +241,12 @@ while True:
             else: # müdür
                 # öğretmen ekle sil , sınıf aç sil
                 while True:
-                    print("1 -> Öğrenci ekle\n2 -> Öğrenci sil\n3 -> Sınıf Listeleri\n4 -> Çıkış")
+                    print("1 -> Öğrenci ekle\n2 -> Öğrenci sil\n3 -> Sınıf Listeleri\n4 -> Öğretmen Ekle\n5 -> Öğretmen Sil\n6 -> Sınıf Aç\n7 -> Sınıf Sil\n8 -> Çıkış")
 
 
                     while True:
                         r = input("> ")
-                        if r in ["1","2","3"]:
+                        if r in ["1","2","3","4","5","6","7","8"]:
                             break
                         else:
                             print("Geçersiz Seçim")
@@ -244,18 +254,24 @@ while True:
 
 
                     if r == "1":
-                        y = input("> isim - tc - sınıf\n")
-                        liste1 = list(y.split(" "))
-                        öğrenciNo = None
+                        [print(x) for x in sınıflar.keys()]
                         while True:
-                            öğrenciNo = random.randint(1,100)
-                            if öğrenciNo not in öğrenciler.keys():
+                            y = input("> isim - tc - sınıf\n")
+                            liste1 = list(y.split(" "))
+                            öğrenciNo = None
+
+                            while True:
+                                öğrenciNo = random.randint(1,100)
+                                if öğrenciNo not in öğrenciler.keys():
+                                    break
+                            öğrenciler[str(öğrenciNo)] = öğrenci(liste1[0],liste1[1],liste1[2],liste1[1][0:5])
+
+                            # liste1[2] bu sınıfa eklenmeli
+                            try:
+                                sınıflar[liste1[2]].liste[0][str(öğrenciNo)] = öğrenciler[str(öğrenciNo)]
                                 break
-                        öğrenciler[str(öğrenciNo)] = öğrenci(liste1[0],liste1[1],liste1[2],liste1[1][0:5])
-
-                        # liste1[2] bu sınıfa eklenmeli
-
-                        sınıflar[liste1[2]].liste[0][öğrenciNo] = öğrenciler[str(öğrenciNo)]
+                            except:
+                                print("Yanlış Sınıf ismi !")
 
 
 
@@ -264,18 +280,84 @@ while True:
                     
                     
                     elif r == "2":
-                        s = input("Silmek istediğniz öğrenci no :")
-                        del öğrenciler[s]
-                        for i in sınıflar:
-                            if s in sınıflar[i].liste:
-                                del sınıflar[i].liste[s]    
-                        pass
+                        
+                        for i in öğrenciler:
+                            print(öğrenciler[i].isim,i)
+
+                        try:
+                            s = input("Silmek istediğniz öğrenci no :")
+                            del öğrenciler[s]
+                            for i in sınıflar:
+                                if s in sınıflar[i].liste:
+                                    del sınıflar[i].liste[s]    
+                        except:
+                            print("Geçersiz İşlem\n")
+                        
                     
                     elif r == "3":
                         sınıfListeleri(sınıflar)
 
                     elif r == "4":
-                        break
 
+                        branşlar = ["matematik",
+                                   "Elektrik Devre Temelleri", 
+                                   "Bilgisayar Programlama",
+                                   "Derin Öğrenme", 
+                                   "Optimizasyon Yöntemleri"]
+
+                        while True:
+                            isim = input("> Öğretmen İsmi :")
+                            branş = input("> Öğretmen Branşı :")
+                            şifre = input("> Öğretmen Şifresi :")
+
+                            if branş in branşlar:
+                                break
+                            else:
+                                print("Geçersiz Branş")
+
+                        ÖğretmenNo = None
+
+                        while True:
+                            no = random.randint(100,200)
+                            if no not in kadro.liste.keys():
+                                ÖğretmenNo = no
+                                break
+                            #kadro.liste[giriş].şifre
+                        kadro.liste[str(ÖğretmenNo)] = öğretmen(isim,branş,şifre)
+                        print(f"Öğretmen No : {str(ÖğretmenNo)}\nÖğretmen Şifresi : {şifre}")
+
+                        # "1234" : öğretmen("ali","matematik","ali123")
+
+                    elif r == "5":
+
+                        for i in kadro.liste.keys():
+                            print(f"{i} {kadro.liste[i].isim} {kadro.liste[i].branş}")
+
+
+                        a = input("Silmek İstediğniz Öğretmen No : ")
+                        del kadro.liste[a]
+
+
+                    elif r == "6":
+                        sınıf = input("Sınıf isimini girin : ")
+
+                        sınıflar[sınıf] = sınıfListesi()
+
+
+                    elif r == "7":
+                        print("Sınıf silmek için önce yeni bir sınıf açın")
+
+                        sınıf = input("Yeni sınıf isimini girin : ")
+
+                        
+
+                        del_Sınıf = input("Silmek isdediğniz sınıf ismini girin : ")
+
+
+                        sınıflar[sınıf] = sınıflar[del_Sınıf]
+
+
+                    elif r == "8":
+                        break
 
 
