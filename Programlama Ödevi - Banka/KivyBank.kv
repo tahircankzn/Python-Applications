@@ -1,0 +1,747 @@
+WindowManager: 
+    
+    
+    MainWindow:
+    SecondWindow:
+    BakiyeWindow:
+    HesapGecmisiWindow:
+    HesabimWindow:
+    TransferWindow:
+    UyeWindow:
+    Hesapislemleri:
+    SifreDegisim:
+    HesapSil:
+
+
+<HesapSil>:
+    name: "HesapSil"
+
+    GridLayout:
+        cols:2
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            text:"Şifre"
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: Password4_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:50
+
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                root.rest()
+                app.root.current = "Hesapislemleri"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Sil"
+            background_color :"#0EEB12"
+            on_release: root.hesapSil()
+                
+        
+
+
+<SifreDegisim>:
+    name: "SifreDegisim"
+    GridLayout:
+        cols:2
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            text:"Eski Şifre"
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: PasswordOld_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:50
+
+        Label:
+            text:"Yeni Şifre"
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: PasswordNew_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:50
+
+        Label:
+            id : passwordError
+            text:""
+            font_size: 40
+            color:"#010202"
+
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                root.rest()
+                app.root.current = "Hesapislemleri"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Değiştir"
+            background_color :"#0EEB12"
+            on_release: root.change()
+
+<Hesapislemleri>: 
+    name: "Hesapislemleri"
+
+    GridLayout:
+        cols:3
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+        Button:
+            text: "Şifre değiştir"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "SifreDegisim"
+                root.manager.transition.direction = "right"
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+        Button:
+            text: "Hesap Sil"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "HesapSil"
+                root.manager.transition.direction = "right"
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "hesap"
+                root.manager.transition.direction = "right"
+        Label:
+            text:""
+            font_size: 50
+            color:"#010202"
+
+<UyeWindow>: 
+    name: "uye"
+
+    GridLayout:
+        cols:2
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            
+            text:"Üye Ol"
+            font_size: 50
+            color:"#010202"
+        Label:
+            id : bilgi
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+        Label:
+            
+            text:"İsim : "
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: Name_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:50
+
+
+
+        Label:
+            
+            text:"TC :"
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: TC1_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:50
+
+
+        Label:
+            
+            text:"Şifre : "
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: Password1_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size: 50
+
+
+
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Oluştur"
+            background_color :"#0EEB12"
+            on_release:
+                root.üyrOl()
+                #app.root.current = "second"
+                #root.manager.transition.direction = "right"
+        
+
+
+
+
+<TransferWindow>: 
+    name : "transfer"
+
+    GridLayout:
+        cols:2
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            
+            text:"Alıcı hesap No"
+            font_size: 40
+            color:"#010202"
+
+        TextInput:
+            id: alici_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size: 50
+
+
+        Label:
+            
+            text:"Miktar"
+            font_size: 40
+            color:"#010202"
+        TextInput:
+            id: miktar2_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size: 50
+
+
+
+        Label:
+            id : transfer_bilgiler
+            text:"Bakiye"
+            font_size: 40
+            color:"#010202"
+        Label:
+            id : bakiye3
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                root.restart()
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Gönder"
+            background_color :"#0EEB12"
+            on_release: root.send()
+                
+    
+        
+
+<HesabimWindow>: 
+    name: "hesap"
+
+    GridLayout:
+        cols:3
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            id : hesap
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            id : hesapBakiye
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+        Label:
+            id : bilgiHesapSil
+            text:""
+            font_size: 20
+            color:"#010202"
+
+        Button:
+            text: "Hesap İşlemleri"
+            background_color :"#0EEB12"
+            
+            on_release:
+                app.root.current = "Hesapislemleri"
+                root.manager.transition.direction = "left"
+
+
+
+
+
+
+    
+<HesapGecmisiWindow>: 
+    name: "geçmiş"
+    GridLayout:
+        cols:1
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            id : gecmis1
+            text:""
+            font_size: 20
+            color:"#010202"
+        
+        Label:
+            id : gecmis2
+            text:""
+            font_size: 20
+            color:"#010202"
+
+        Label:
+            id : gecmis3
+            text:""
+            font_size: 20
+            color:"#010202"
+
+        Label:
+            id : gecmis4
+            text:""
+            font_size: 20
+            color:"#010202"
+
+        Label:
+            id : gecmis5
+            text:""
+            font_size: 20
+            color:"#010202"
+
+
+
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+
+
+<BakiyeWindow>: 
+    name: "bakiye"
+    
+
+    GridLayout:
+        cols:2
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+        Label:
+            
+            text:"Miktar Girin : "
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: Miktar_input
+            text:""
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size: 50
+
+
+        Button:
+            text: "Para Çek"
+            background_color :"#0EEB12"
+            on_release:  root.ParaCek()
+        Button:
+            text: "Para Yatır"
+            background_color :"#0EEB12"
+            on_release:  root.ParaYatir()
+
+
+        Label:
+            id : transferBilgi
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            id : transferBakiye
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+        Button:
+            text: "Geri"
+            background_color :"#0EEB12"
+            on_release:
+                root.restart()
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Borç Al"
+            background_color :"#0EEB12"
+            on_release: root.BorcAl()
+     
+<MainWindow>:       
+    name: "main"
+
+    GridLayout:
+        cols:4
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:"Öğrenci"
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:"Bankası"
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:"TC ->"
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: TC_input
+            text:"21406601051"
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:30
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:"Şifre ->"
+            font_size: 50
+            color:"#010202"
+        TextInput:
+            id: Password_input
+            text:"123"
+            multiline: False
+            size_hint:(1,0.5)
+            padding_y:(30,30)
+            font_size:50
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+
+        Button:
+            text: "Üye Ol"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "uye"
+                root.manager.transition.direction = "right"
+        Label:
+            
+            text:"From"
+            font_size: 20
+            color:"#010202"
+        Label:
+            id : feedback
+            text:"Tahir Can Kozan"
+            font_size: 20
+            color:"#010202"
+        Button:
+            text: "Giriş"
+            background_color :"#0EEB12"
+            on_release:  root.giriş()
+        
+        
+
+<SecondWindow>:
+    name: "second"
+
+    GridLayout:
+        cols:3
+        size_hint:(1,1)
+        pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Button:
+            text: "Hesabım"
+            background_color :"#0EEB12"
+           
+            on_release:
+                app.root.current = "hesap"
+                root.manager.transition.direction = "right"
+        
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Button:
+            text: "Bakiye İşlemleri"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "bakiye"
+                root.manager.transition.direction = "right"
+        
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Button:
+            text: "Para Transferi"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "transfer"
+                root.manager.transition.direction = "right"
+        
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        
+
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Button:
+            text: "Hesap Geçmişi"
+            background_color :"#0EEB12"
+            on_release:
+                app.root.current = "geçmiş"
+                root.manager.transition.direction = "right"
+        
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+
+        Button:
+            text: "Çıkış"
+            background_color :"#0EEB12"
+            on_release:
+                root.exit()
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+        
+        Label:
+            
+            text:""
+            font_size: 50
+            color:"#010202"
+        
+     
