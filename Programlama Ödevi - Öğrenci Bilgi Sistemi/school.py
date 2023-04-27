@@ -1,3 +1,22 @@
+"""
+@author: Tahir Can Kozan - 21406601051
+
+"""
+
+"""
+UYGULAMA ÖZELLİKLERİ :
+
+1 - ÖĞRENCİ VE ÖĞRETMEN EKLEME
+2 - MÜDÜR DEĞİŞİKLİĞİ
+3 - ÖĞRENCİ SINIF DEĞİŞİKLİĞİ
+4 - MÜDÜR VE ÖĞRETMENE ÖZEL YETKİLER
+5 - ÖĞRENCİLER NOTLARININ ORTALAMASINI GÖREBİLİR
+6 - ÖĞRENCİLER MANUEL OLARAK SINAV BİLGİLERİNİ GİREREK ORTALAMA HESAPLAYBİLİRLER
+7 - YENİ SINIF OLUŞTURMA VE SİLME 
+8 - ÖĞRETMEN BRANŞINA GÖRE VİZE VE FİNAL NOTLARINI GİREBİLİR
+
+"""
+
 import random 
 
 ###################################  CLASS'LAR OLUŞTURULDU  ##########################################  
