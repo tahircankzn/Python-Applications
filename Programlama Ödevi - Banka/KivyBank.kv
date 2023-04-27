@@ -1,6 +1,5 @@
 WindowManager: 
     
-    
     MainWindow:
     SecondWindow:
     BakiyeWindow:
@@ -14,10 +13,10 @@ WindowManager:
 
 
 <HesapSil>:
-    name: "HesapSil"
+    name: "HesapSil"   # SAYFALAR ARSI GEÇİŞ İÇİN SAYFALARA İD TANIMLANDI
 
-    GridLayout:
-        cols:2
+    GridLayout: # GridLayout EKRANI EŞİT KUTUCUKLARA BÖLMEMİZE YARAYAN KİVY ÖZELLİĞİDİR , BUTONLAR - METİNLER - METİN GİRİŞLERİ BİRER KUTUCUKTUR
+        cols:2 # SÜTUN SAYSI
         size_hint:(1,1)
         pos_hint:{"center_x": 0.5 ,"center_y": 0.5 }
 
@@ -26,7 +25,7 @@ WindowManager:
             font_size: 50
             color:"#010202"
         TextInput:
-            id: Password4_input
+            id: Password4_input  # METİN GİRİŞİ BİLGİSİNİ .PY DOSYASINDA İŞLEME SOKABİLMEK İÇİN İD BELİRLENDİ
             text:""
             multiline: False
             size_hint:(1,0.5)
@@ -48,9 +47,9 @@ WindowManager:
             text: "Geri"
             background_color :"#0EEB12"
             on_release:
-                root.rest()
-                app.root.current = "Hesapislemleri"
-                root.manager.transition.direction = "left"
+                root.rest()  # .PY DOSYASINDAKİ FONKSİYON ÇALIŞTIRILDI
+                app.root.current = "Hesapislemleri"   # İD'Sİ Hesapislemleri OLAN SAYFAYA GEÇİŞ SAĞLANDI
+                root.manager.transition.direction = "left" # SAYFA GEÇİŞİ SOLA DOĞRU
 
         Button:
             text: "Sil"
@@ -116,6 +115,8 @@ WindowManager:
             background_color :"#0EEB12"
             on_release: root.change()
 
+
+
 <Hesapislemleri>: 
     name: "Hesapislemleri"
 
@@ -172,6 +173,8 @@ WindowManager:
             text:""
             font_size: 50
             color:"#010202"
+
+
 
 <UyeWindow>: 
     name: "uye"
@@ -250,12 +253,8 @@ WindowManager:
             background_color :"#0EEB12"
             on_release:
                 root.üyrOl()
-                #app.root.current = "second"
-                #root.manager.transition.direction = "right"
+            
         
-
-
-
 
 <TransferWindow>: 
     name : "transfer"
@@ -323,7 +322,6 @@ WindowManager:
                 
     
         
-
 <HesabimWindow>: 
     name: "hesap"
 
@@ -501,6 +499,9 @@ WindowManager:
             background_color :"#0EEB12"
             on_release: root.BorcAl()
      
+
+
+
 <MainWindow>:       
     name: "main"
 

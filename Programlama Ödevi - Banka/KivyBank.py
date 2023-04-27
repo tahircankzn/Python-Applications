@@ -1,3 +1,21 @@
+"""
+@author: Tahir Can Kozan - 21406601051
+
+"""
+
+"""
+UYGULAMA ÖZELLİKLERİ :
+
+1 - ÜYE OLMA
+2 - PARA ÇEKME VE YATIRMA
+3 - HESAPLAR ARASI PARA TRANSFERİ
+4 - SON 10 HESAP GEŞMİŞİ - TARİH BİLGİLERİ İLE
+5 - HESAP SİLME - BORÇ VARSA SİLMEYE İZİN VERMEZ
+6 - BORÇ ALMA - BAKİYE EKSİYE DÜŞEBİLİR
+7 - ŞİFRE DEĞİŞİKLİ
+
+"""
+
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -8,9 +26,7 @@ import time
 
 Window.clearcolor = (231/255.0, 179/255.0, 0/255.0,1) 
 
-
-
-
+# BANKA İÇİN CLASS'LAR OLUŞTURULDU
 class işlemler:
     
         
@@ -40,12 +56,12 @@ class user(işlemler):
 
 
 
-
+# DENEME İÇİN KULLANICI EKLENDİ
 users = {"21406601051":user(123,"tahir",123)}
 hesapno = []
-Kullanıcı = None
+Kullanıcı = None # GİRİŞ YAPAN KULLANICININ ANLIK OLARAK TUTULMASI SAĞLANDI , GLOABAL OLARAK ULAŞILIYOR
 
-#########################################################
+########################  ARAYÜZ PENCERELERİ İÇİN CLASS'LAR ############################################
     
 class MainWindow(Screen):
     
@@ -63,6 +79,7 @@ class MainWindow(Screen):
                     self.manager.current = "second"
                 else:
                     self.ids.feedback.text = "Hatalı Giriş"
+
             except:
                 self.ids.feedback.text = "TC Hatalı"
         except:
@@ -73,13 +90,13 @@ class MainWindow(Screen):
         
 
 
-class SecondWindow(Screen):
+class SecondWindow(Screen):  # HESABA GİRİŞ YAPTIKTAN SONRA AÇILAN SAYFA
     def exit(self):
         global Kullanıcı
         Kullanıcı = None
     
-    pass
-class TransferWindow(Screen):
+    
+class TransferWindow(Screen): # HESAPLAR ARASI PARA TRANSFERİ PENCERESİ
     def on_enter(self):
         self.ids.bakiye3.text = str(Kullanıcı.bakiye)
     
@@ -109,7 +126,7 @@ class TransferWindow(Screen):
                 self.ids.bakiye3.text = str(Kullanıcı.bakiye)
 
 
-                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | ->{miktar}")
+                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | ->{miktar}") # HESAP GEÇMİŞİNE TARİH BİLGİSİ İLE EKLENMESİ SAĞLANDI
 
             else:
                 self.ids.transfer_bilgiler.text = "Yetersiz Bakiye"
@@ -120,7 +137,7 @@ class TransferWindow(Screen):
     
 
 
-class UyeWindow(Screen):
+class UyeWindow(Screen): # ÜYE OLMA PENCERESİ
 
     def üyrOl(self):
 
@@ -136,20 +153,20 @@ class UyeWindow(Screen):
 
             for i in TC:
                 if i not in ["0","1","2","3","4","5","6","7","8","9"]:
-                    raise ZeroDivisionError
+                    raise ZeroDivisionError  # GİRİLEN TC İÇİNDE RAKAM HARİCİ KARAKTER BULUNUYORSA GERİ BİLDİRİM VERMEK İÇİN RASGELE BİR HATA VERİLMESİ SAĞLANDI
 
             if TC not in users.keys():
                 hesapNo = None
                 while True:
-                    hesapNo = random.randint(100,300)
-                    if hesapNo not in hesapno:
+                    hesapNo = random.randint(100,300) # RASGELE HESAP NUMARASI OLUŞTURULDU
+                    if hesapNo not in hesapno: # DAHA ÖNCE KULLANILMAYAN NUMARANIN OLUŞTURULMASI İÇİN KARAR YAPISI
                         break
                 
                 users[TC] = user(hesapNo,isim,int(Password))
                 global Kullanıcı
                 Kullanıcı = users[TC]
-                self.manager.transition.direction = "left"
-                self.manager.current = "second"
+                self.manager.transition.direction = "left" # SAYFA GEÇİŞİNİN SOLA DOĞRU KAYARAK YAPILMASI
+                self.manager.current = "second" # second  İD'Lİ SAYFAYA GEÇİLMESİ
             
             else:
                 self.ids.bilgi.text = "TC kullanılmış"
@@ -163,9 +180,14 @@ class UyeWindow(Screen):
             self.ids.bilgi.font_size = 30
             self.ids.bilgi.text = "Bilgiler Boş Bırakılamaz"
 
-class Hesapislemleri(Screen):
+
+
+
+class Hesapislemleri(Screen): # HESAP SİLME VE ŞİFRE DEĞİŞİKLİĞİ  SAYFALARINA GEÇİŞ  SAYFASI
     pass
-class SifreDegisim(Screen):
+
+
+class SifreDegisim(Screen): # ŞİFRE DEĞİŞTİRME SAYFASI
     def change(self):
         try:
             eski = self.ids.PasswordOld_input.text
@@ -187,7 +209,9 @@ class SifreDegisim(Screen):
         self.ids.PasswordNew_input.text = ""
         self.ids.passwordError.text = ""
       
-class HesapSil(Screen):
+
+
+class HesapSil(Screen):   # HESAP SİLME SAYFASI
     def hesapSil(self):
         
         global Kullanıcı
@@ -209,7 +233,7 @@ class HesapSil(Screen):
         self.ids.Password4_input.text = ""
         
 
-class HesabimWindow(Screen):
+class HesabimWindow(Screen): # HESABIM SAYFASI
     
     def on_enter(self):
 
@@ -220,7 +244,7 @@ class HesabimWindow(Screen):
 
     
 
-class BakiyeWindow(Screen):
+class BakiyeWindow(Screen): # PARA ÇEKME VE YATIRMA İŞLEMLERİNİN YAPILDIĞI SAYFA
 
     def on_enter(self):
         self.ids.transferBakiye.text = f"Bakiye : {str(Kullanıcı.bakiye)}"
@@ -231,7 +255,7 @@ class BakiyeWindow(Screen):
         self.ids.transferBilgi.text = ""
 
 
-        pass
+        
     def ParaCek(self):
         try:
             miktar = int(self.ids.Miktar_input.text)
@@ -245,7 +269,7 @@ class BakiyeWindow(Screen):
                 Kullanıcı.para_çekme(miktar)
                 self.ids.transferBakiye.text = str(Kullanıcı.bakiye)
                 self.ids.transferBakiye.text = f"Bakiye : {str(Kullanıcı.bakiye)}"
-                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | -{miktar}")
+                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | -{miktar}") # HESAP GEÇMİŞİNE TARİH BİLGİSİ İLE EKLENMESİ SAĞLANDI
         except:
             pass
 
@@ -260,7 +284,7 @@ class BakiyeWindow(Screen):
                 Kullanıcı.para_yatırma(miktar)
                 self.ids.transferBakiye.text = str(Kullanıcı.bakiye)
                 self.ids.transferBakiye.text = f"Bakiye : {str(Kullanıcı.bakiye)}"
-                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | +{miktar}")
+                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | +{miktar}") # HESAP GEÇMİŞİNE TARİH BİLGİSİ İLE EKLENMESİ SAĞLANDI
         except:
             pass
         
@@ -277,22 +301,22 @@ class BakiyeWindow(Screen):
                 Kullanıcı.para_çekme(miktar)
                 self.ids.transferBakiye.text = str(Kullanıcı.bakiye)
                 self.ids.transferBakiye.text = f"Bakiye : {str(Kullanıcı.bakiye)}"
-                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | ={miktar}")
+                Kullanıcı.hesapGeçmişi.append(f"{time.ctime()} | ={miktar}") # HESAP GEÇMİŞİNE TARİH BİLGİSİ İLE EKLENMESİ SAĞLANDI
         except:
             pass
         
         
     
-    pass
+    
 
-class HesapGecmisiWindow(Screen):
+class HesapGecmisiWindow(Screen): # HESAP GEÇMİŞİ SAYFASI
     def on_enter(self):
         
         geçmiş = Kullanıcı.hesapGeçmişi
         
 
         
-        while len(geçmiş) < 10:
+        while len(geçmiş) < 10: # SON 10 İŞLEMİN GÖSTERİLMESİ
             geçmiş.append(" ")
             
 
@@ -303,12 +327,9 @@ class HesapGecmisiWindow(Screen):
         self.ids.gecmis5.text = f"{geçmiş[8]}\n{geçmiş[9]}"
         
 
-        pass
-    
-    
 
 
-class WindowManager(ScreenManager):
+class WindowManager(ScreenManager): # PENCERELER ARASI GEÇİŞ YAPMAYA SAĞLAYAN ÖZEL KİVY SINIFI
     pass
 
 kv = Builder.load_file("KivyBank.kv")
