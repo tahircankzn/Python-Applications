@@ -1,0 +1,18 @@
+
+
+ Derslerin yerleşeceği sınıf olarak istediğiniz 3 sınıf ismi belirleyip kullanabilirsiniz (G151, E-347 vb.).
+
+
+
+
+ Laboratuvar dersleri için G-368 ve G-374 nolu sınıfları kullanabilirsiniz ve laboratuvar
+uygulamalarının bu sınıflara yerleştirilmesini sağlamalısınız.
+
+ Tüm sınıf seviyelerinde (1., 2., 3. ve 4.sınıflar) laboratuvar veya uygulama dersleri aynı
+gün, saat ve sınıfta olmamalıdır (Örneğin 2.sınıfta yer alan Elektronik-1 dersi
+laboratuvar uygulaması ile 3. sınıfta yer alan Ölçme dersinin laboratuvar uygulaması
+aynı gün ve saatte olmamalıdır).
+
+
+ders adı, ders hocası, dersin günü, 
+dersin saati ve dersin yapılacağı sınıf bilgileri yazılmalıdır.
