@@ -32,7 +32,7 @@ class user(işlemler):
 
 
 
-users = {"112":user(21406601051,1234)}
+users = {"112":user(21400000,1234)}
 hesapno = []
 
 
