@@ -57,7 +57,7 @@ class user(işlemler):
 
 
 # DENEME İÇİN KULLANICI EKLENDİ
-users = {"21406601051":user(123,"tahir",123)}
+users = {"2140660001":user(123,"tahir",123)}
 hesapno = []
 Kullanıcı = None # GİRİŞ YAPAN KULLANICININ ANLIK OLARAK TUTULMASI SAĞLANDI , GLOABAL OLARAK ULAŞILIYOR
 
