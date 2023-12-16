@@ -1,5 +1,5 @@
 """
-@author: Tahir Can Kozan - 21406601051
+@author: Tahir Can Kozan 
 
 """
 
