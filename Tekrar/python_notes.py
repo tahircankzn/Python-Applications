@@ -1,14 +1,35 @@
 ######################  PYTHON TEKRAR ######################
 ######################     NOTLARI    ######################
 # @author: Tahir Can Kozan
+#%%
+###############################################################################
+# VERİ TİPLERİ
 
+tamSayi = 5
+ondalikliSayi = 5.0
+metin = "Poyraz"
+liste = [1,2,"Poyraz",5.0]
+
+dictionary = {
+    "Ad" : "Tahir Can",
+    "Soyad" : "Kozan",
+    "Yaş" : "23",
+    "Bölüm" : "Mekatronik Mühendisliği",
+    "Sınıf" : "3"       
+                } 
+
+tupleVeri = (1,2,3,3,4) # içerik değiştirilemez
+
+setVeri = {1,2,2,3,4,4,4,4,4} # {1, 2, 3, 4} , aynı terimler bir defa gösterilir
+
+#%%
+###############################################################################
 x = y = z = 5
 
 x,y,z = 1,2,3
 
 #%%
 ###############################################################################
-
 
 liste = [1,2,3]
 
@@ -18,33 +39,33 @@ number1,number2,number3 = liste
 ###############################################################################
 
 
-text1 = "Tahir"
-text2 = "Can"
-text3 = "Kozan"
+text1 = "Poyraz"
+text2 = "Ve"
+text3 = "Karayel"
 
-print(text1 , text2, text3) # Tahir Can Kozan
-print(text1 + text2 + text3) # TahirCanKozan
-print("{}{}{}".format(text1 , text2, text3 )) # TahirCanKozan
-print("{} {} {}".format(text1 , text2, text3 )) # Tahir Can Kozan
+print(text1 , text2, text3) # Poyraz Ve Karayel
+print(text1 + text2 + text3) # PoyrazVeKarayel
+print("{}{}{}".format(text1 , text2, text3 )) # PoyrazVeKarayel
+print("{} {} {}".format(text1 , text2, text3 )) # Poyraz Ve Karayel
 
 #%%
 ###############################################################################
 
 
-text4 = "tahir"
+text4 = "Poyraz"
 number4 = 3
-print(number4 , text4) # 3 tahir
-print(str(number4) + text4) # 3tahir
+print(number4 , text4) # 3 Poyraz
+print(str(number4) + text4) # 3Poyraz
 
 
 ###############################################################################
 # GLOBAL DEĞİŞKENLER
 #%%
 
-variables1 = "tahir" # fonksiyon dışında olan bir değişken , bütün fonksiyonlar buna ulaşabilir
+variables1 = "Poyraz" # fonksiyon dışında olan bir değişken , bütün fonksiyonlar buna ulaşabilir
 
 def tahir():
-    print("ben " + variables1)
+    print("Şampiyon " + variables1)
 
 tahir()
 
@@ -67,6 +88,7 @@ print("ad : {} , yaş : {}".format(student1.name,student1.age))
 variables2 = 2 # global değişken
 
 def deneme():
+    #global variables2
     variables2 = 3 # globali değiştirmez
     print(variables2) # global olan variables2  değer değil, fonksiyon içindeki variables2
 
@@ -166,7 +188,38 @@ print(liste1[0]) # 1
 string1 = "tahir can kozan"
 print(string1[0]) # t
 
+###############################################################################
+# Karar Yapıları
+#%%
 
+sayı = 1
+
+if sayı < 4:
+    print("sayı 4 den küçük")
+elif sayı == 4:
+    print("sayı 4")
+else:
+    print("sayı 4 den büyük")
+
+###############################################################################
+# Döngüler
+#%%
+# For döngüsü
+
+for sayı in [1,2,3,4]:
+    print(sayı)
+
+#%%
+# While döngüsü   
+
+sayı = 1
+while True:
+    print(sayı)
+    sayı+=1
+
+    if sayı == 5:
+        break
+    
 ###############################################################################
 #%%
 
@@ -823,7 +876,7 @@ while a<10:
 
 a = 0
 while a<6:
-    print("a")
+    print(f"{a}")
     a+=1
 else:
     print("bitti") 
@@ -883,8 +936,6 @@ print(time.ctime())
 ###############################################################################
 #%%
 
-
-
 def slow(n):
     liste = []
     for i in range(n**2):
@@ -931,7 +982,7 @@ print(time.time()- start)
 
 ###############################################################################
 #%%
-# ????????? çam ağçı
+# üçgen
 b = 10
 b1 = b-4
 c = b-b/2
@@ -1104,4 +1155,3 @@ print(liste)
 
 ###############################################################################
 #%%
-
