@@ -22,6 +22,24 @@ tupleVeri = (1,2,3,3,4) # içerik değiştirilemez
 
 setVeri = {1,2,2,3,4,4,4,4,4} # {1, 2, 3, 4} , aynı terimler bir defa gösterilir
 
+
+x = "Hello World" # str
+x = 20	# int	
+x = 20.5	# float	
+x = 1j	# complex	
+x = ["apple", "banana", "cherry"]	# list	
+x = ("apple", "banana", "cherry")	# tuple	
+x = range(6)	# range	
+x = {"name" : "John", "age" : 36}	# dict	
+x = {"apple", "banana", "cherry"}	# set	
+x = frozenset({"apple", "banana", "cherry"})	# frozenset	
+x = True	# bool	
+x = b"Hello"	# bytes	
+x = bytearray(5)	# bytearray	
+x = memoryview(bytes(5))	# memoryview	
+x = None
+print(type(x)) # type() tipini gösterir
+
 #%%
 ###############################################################################
 x = y = z = 5
@@ -45,8 +63,12 @@ text3 = "Karayel"
 
 print(text1 , text2, text3) # Poyraz Ve Karayel
 print(text1 + text2 + text3) # PoyrazVeKarayel
+
 print("{}{}{}".format(text1 , text2, text3 )) # PoyrazVeKarayel
 print("{} {} {}".format(text1 , text2, text3 )) # Poyraz Ve Karayel
+
+print(f"{text1}{text2}{text3}") # PoyrazVeKarayel
+print(f"{text1} {text2} {text3}") # Poyraz Ve Karayel
 
 #%%
 ###############################################################################
@@ -128,28 +150,6 @@ def deneme2():
 deneme2()
 
 print(variables4)
-
-
-###############################################################################
-#%%
-
-x = "Hello World" # str
-x = 20	# int	
-x = 20.5	# float	
-x = 1j	# complex	
-x = ["apple", "banana", "cherry"]	# list	
-x = ("apple", "banana", "cherry")	# tuple	
-x = range(6)	# range	
-x = {"name" : "John", "age" : 36}	# dict	
-x = {"apple", "banana", "cherry"}	# set	
-x = frozenset({"apple", "banana", "cherry"})	# frozenset	
-x = True	# bool	
-x = b"Hello"	# bytes	
-x = bytearray(5)	# bytearray	
-x = memoryview(bytes(5))	# memoryview	
-x = None
-print(type(x)) # type() tipini gösterir
-
 
 ###############################################################################
 #%%
@@ -261,7 +261,7 @@ print("tahir21" in liste2) # False
 
 ###############################################################################
 
-
+#%%
 # t a h i r   c a n   k  o  z  a  n
 # 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 #            ...         -4 -3 -2 -1
@@ -270,23 +270,23 @@ print(string3[0:3]) # tah  , 0. dan 2. index e kadar
 
 print(string3[:3]) # tah   ,0. dan 2. index e kadar
 
-print(string3[2:]) # hir can kozan   ,2. den sonuna kadar kadar
+print(string3[2:]) # hir can kozan   ,2. index den sonuna kadar kadar
 
 print(string3[0:3:2]) # th   ,0. dan 2. index e kadar 2 şer adımlarla ilerler
 
-print(string3[-1]) # n    ,son karakter
+print(string3[-1]) # n    , son karakter
 
 print(string3[-2:-5:-1]) # -2 -3 -4 değerler yazılır
 
-print(string3[-2:-5]) # boş çıkar çünkü -2 den başlayınca otomatik
-                      # soldan sağ gider ama -5 -2nin solunda
+print(string3[-2:]) # an yazılır , 2. paremetre girilmez ise sağ tarafa doğru devam eder
+                      
 
 
-# [-3:-4] dersek
+# [-3:] dersek
 #  t  a  h  i   r      yön belirmedikce soldan sağa gider
 # -5 -4 -3 -2  -1
 #        |------->   sona geldik bitti , yön belirmedikce soldan sağa gider
-#                    bu yüzden boş çıktı verir
+#                    
 
 # [-3:-4:-1] dersek
 #  t  a  h  i   r   
